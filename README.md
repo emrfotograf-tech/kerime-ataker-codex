@@ -1,0 +1,50 @@
+# KERIME ATAKER — CODEX OPERATION GUIDE
+
+## PURPOSE
+
+This project is the operational rule system for Kerime Ataker outputs inside Codex.
+
+Codex must read:
+
+- AGENTS.md
+- skills/kerime-ataker-luxury-operator/SKILL.md
+- resources/*.md
+
+before producing Kerime Ataker content.
+
+## HOW TO USE
+
+When a new product, campaign or visual request is given, Codex must:
+
+1. Read AGENTS.md
+2. Read the luxury operator skill
+3. Read all resource files
+4. Check product-index.md if product exists
+5. Produce output according to Kerime Ataker rules
+6. Run final QA mentally before final answer
+
+## UPDATE METHOD
+
+New products must be added to:
+
+skills/kerime-ataker-luxury-operator/resources/product-index.md
+
+Do not invent product details.
+If product data is missing, mark as:
+requires verification.
+
+## STANDARD CODEX COMMAND
+
+Run this product through the Kerime Ataker Luxury Operator System:
+[PRODUCT LINK / PRODUCT NAME / CAMPAIGN REQUEST]
+
+Return:
+- product character
+- Instagram caption
+- story text
+- reels structure
+- hashtags
+- boutique fit
+- U.S. city fit
+- Meta ads note
+- final QA note
