@@ -48,3 +48,9 @@ Return:
 - U.S. city fit
 - Meta ads note
 - final QA note
+
+## REPOSITORY ARCHITECTURE
+
+Detailed operating-system repository map and standards:
+
+- docs/OPERATING_SYSTEM_ARCHITECTURE.md
