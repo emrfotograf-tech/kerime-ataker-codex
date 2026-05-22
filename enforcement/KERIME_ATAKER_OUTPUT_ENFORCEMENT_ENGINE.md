@@ -259,6 +259,75 @@ Aşağıdakiler kanıtsızsa FATAL:
 
 ## 11) OPERATOR OUTPUT DISCIPLINE
 
+## 11.1) SOCIAL OUTPUT EXPANSION LOCK (SOEL)
+
+KOEE, sosyal üretim çıktılarında **COMPLETE SOCIAL EXECUTION FORMAT** zorunluluğunu uygular.
+
+### 11.1.1 Mandatory Completion Rule
+
+Bir sosyal üretim çıktısı aşağıdaki bölümlerin tamamını içermiyorsa output `INVALID_SOCIAL_INCOMPLETE` olarak reddedilir:
+
+1. `POST`
+   - posting time
+   - caption
+   - hashtags
+2. `STORY`
+   - story 1 text
+   - story 2 text
+   - link sticker text
+   - story timing
+3. `REELS`
+   - 15-second reels structure
+   - reels overlay texts
+   - reels caption
+   - reels hashtags
+   - reels timing
+4. `META_DEPLOYMENT`
+   - Meta objective
+   - campaign type
+   - deployment logic
+   - warm/cold/retargeting logic
+5. `TARGETING`
+   - primary U.S. cities
+   - state targeting
+   - luxury radius strategy
+   - interests
+   - behaviors
+   - strategic audience signals
+6. `POSITIONING`
+   - boutique fit
+   - seasonal fit
+   - occasion fit
+   - luxury positioning logic
+7. `QA`
+   - spam control
+   - aggressive CTA control
+   - luxury tone validation
+   - competitor-copy prevention
+   - Meta safety validation
+
+### 11.1.2 Early Stop Prohibition
+
+KOEE aşağıdaki durumda hard fail üretir:
+
+- Output yalnızca caption ile biter.
+- Output yalnızca product analysis ile biter.
+- Output yalnızca operator summary ile biter.
+
+Bu durumda sistem `FORCE_CONTINUE_SOCIAL_SECTIONS` sinyali ile üretimi zorunlu olarak devam ettirir.
+
+### 11.1.3 Validation Error Codes
+
+- `INVALID_SOCIAL_INCOMPLETE`
+- `MISSING_POST_BLOCK`
+- `MISSING_STORY_BLOCK`
+- `MISSING_REELS_BLOCK`
+- `MISSING_META_DEPLOYMENT_BLOCK`
+- `MISSING_TARGETING_BLOCK`
+- `MISSING_POSITIONING_BLOCK`
+- `MISSING_QA_BLOCK`
+- `EARLY_STOP_DETECTED`
+
 - Operasyonel anlatım dili: **Türkçe**.
 - Brand-facing text: **İngilizce**.
 - Gereksiz uzunluk, tekrar, belirsiz jargon yasak.
