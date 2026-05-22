@@ -238,6 +238,60 @@ Her satır alanları:
 - `PriceVerified` (bool/na)
 - `AvailabilityVerified` (bool/na)
 - `SourceList` (URL or internal ref)
+
+---
+
+## 14.1) COMPLETE SOCIAL EXECUTION FORMAT ZORUNLULUĞU
+
+Sosyal üretim çıktılarında aşağıdaki yürütme bloklarının **tamamı zorunludur**:
+
+1. `POST`
+   - `posting_time`
+   - `caption`
+   - `hashtags`
+2. `STORY`
+   - `story_1_text`
+   - `story_2_text`
+   - `link_sticker_text`
+   - `story_timing`
+3. `REELS`
+   - `reels_15s_structure`
+   - `reels_overlay_texts`
+   - `reels_caption`
+   - `reels_hashtags`
+   - `reels_timing`
+4. `META_DEPLOYMENT`
+   - `meta_objective`
+   - `campaign_type`
+   - `deployment_logic`
+   - `warm_cold_retargeting_logic`
+5. `TARGETING`
+   - `primary_us_cities`
+   - `state_targeting`
+   - `luxury_radius_strategy`
+   - `interests`
+   - `behaviors`
+   - `strategic_audience_signals`
+6. `POSITIONING`
+   - `boutique_fit`
+   - `seasonal_fit`
+   - `occasion_fit`
+   - `luxury_positioning_logic`
+7. `QA`
+   - `spam_control`
+   - `aggressive_cta_control`
+   - `luxury_tone_validation`
+   - `competitor_copy_prevention`
+   - `meta_safety_validation`
+
+### 14.1.1 Erken Bitirme Yasağı
+
+Aşağıdaki outputlar geçersizdir:
+- sadece caption ile biten output
+- sadece product analysis ile biten output
+- sadece operatör özeti ile biten output
+
+Kural: Bu kısmi formatlar `INVALID_SOCIAL_OUTPUT_FORMAT` olarak işaretlenir ve yayın hattına alınamaz.
 - `MissingData` (array)
 
 Eksik veri varsa:
