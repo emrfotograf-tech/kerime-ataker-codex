@@ -56,3 +56,10 @@ Return:
 Detailed operating-system repository map and standards:
 
 - docs/OPERATING_SYSTEM_ARCHITECTURE.md
+
+
+## CANONICAL OUTPUT SCHEMA
+
+Canonical operator output schema for all output types:
+
+- schemas/KERIME_ATAKER_OPERATOR_OUTPUT_SCHEMA.md
