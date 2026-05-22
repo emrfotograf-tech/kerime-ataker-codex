@@ -63,3 +63,10 @@ Detailed operating-system repository map and standards:
 Canonical operator output schema for all output types:
 
 - schemas/KERIME_ATAKER_OPERATOR_OUTPUT_SCHEMA.md
+
+
+## AUDIT MODULE
+
+Production-grade pre-delivery simulation and validation module:
+
+- audits/KERIME_ATAKER_OUTPUT_AUDITOR.md
