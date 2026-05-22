@@ -83,3 +83,10 @@ Production-grade deterministic simulation and stress-test engine:
 
 - simulation-engine/KERIME_ATAKER_SIMULATION_ENGINE.md
 
+
+
+## PRODUCTION ROUTER
+
+Production-grade orchestration router for deterministic routing, validation, simulation, escalation and release gating:
+
+- router/KERIME_ATAKER_PRODUCTION_ROUTER.md
