@@ -77,3 +77,9 @@ Production-grade orchestration and routing engine (pre-output logic layer):
 
 - decision-engine/KERIME_ATAKER_DECISION_ENGINE.md
 
+## SIMULATION ENGINE
+
+Production-grade deterministic simulation and stress-test engine:
+
+- simulation-engine/KERIME_ATAKER_SIMULATION_ENGINE.md
+
