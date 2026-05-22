@@ -70,3 +70,10 @@ Canonical operator output schema for all output types:
 Production-grade pre-delivery simulation and validation module:
 
 - audits/KERIME_ATAKER_OUTPUT_AUDITOR.md
+
+## DECISION ENGINE
+
+Production-grade orchestration and routing engine (pre-output logic layer):
+
+- decision-engine/KERIME_ATAKER_DECISION_ENGINE.md
+
