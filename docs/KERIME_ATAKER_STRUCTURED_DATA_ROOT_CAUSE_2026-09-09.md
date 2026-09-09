@@ -38,6 +38,15 @@ The live theme currently hard-codes every variant offer as:
 
 It does not branch on `variant.available` in this JSON-LD snippet. Therefore unavailable variants could be represented as InStock in theme-generated structured data. This is a verified code-level quality issue and should be corrected in a safe staging theme before any live deployment.
 
+### Current live impact check — VERIFIED 2026-09-09
+
+The current ACTIVE online-store catalog was separately re-read after identifying this code pattern. All inspected active published variants currently report `availableForSale: true`, and no inspected active product reports out-of-stock variants. Therefore the hard-coded `InStock` value does not currently create a verified live availability contradiction for the present catalog snapshot.
+
+Classification:
+- current catalog mismatch: NOT OBSERVED
+- future correctness risk if inventory changes: VERIFIED
+- safe staging fix still recommended before a real out-of-stock state occurs
+
 The theme also hard-codes:
 - `"priceValidUntil": "2030-01-01"`
 
@@ -60,5 +69,6 @@ Do not write directly to the live MAIN theme. Preferred path:
 
 - Merchant Listings root cause — DONE / VERIFIED
 - Product Snippets root cause — DONE / VERIFIED
-- Hard-coded availability defect — DONE / VERIFIED
+- Hard-coded availability code risk — DONE / VERIFIED
+- Current active-catalog availability impact audit — DONE / NO MISMATCH OBSERVED
 - Live remediation — PARTIAL / BLOCKED by missing return/shipping facts + staging deployment requirement
