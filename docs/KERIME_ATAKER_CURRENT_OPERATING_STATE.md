@@ -52,6 +52,9 @@ DONE work must not be rebuilt unless live evidence shows a verified regression o
 31. Canonical SEO remediation state — ACTIVE in `docs/KERIME_ATAKER_SEO_REMEDIATION_STATE.md`.
 32. Shopify redirect-chain cleanup — DONE: `/products/nergis` now points directly to `/products/elly-leather-mini-dress`; live Shopify was re-read after update and the chain is removed.
 33. Shopify full redirect-chain/cycle audit — DONE: all current URL redirects were re-read after the Nergis repair; no remaining redirect target matches another redirect source path, so no additional multi-hop chain or cycle is present in the current redirect table.
+34. Active navigation audit — DONE: live MAIN theme header, mobile navigation, and Shop footer use `main-menu-2`; its current collection links point directly to live collection resources. Legacy `main-menu` / `accessory-menu` records are retained and not destructively edited.
+35. Published collection thin-content audit — DONE: `/collections/frontpage` is a verified published 0-product / empty-description / no-SEO candidate requiring Search Console URL confirmation before any destructive action. `/collections/leather-dress` has one product and no collection description but valid SEO metadata; monitor only.
+36. MAIN-theme mega-menu link audit — DONE / ISSUE DIAGNOSED: current header-group configuration has promotional image URLs set to legacy `shopify://collections/bra`, which redirects to `/collections/lingerie`. This is an internal-link hygiene delta; no blind live MAIN-theme write was attempted. Detailed record: `docs/KERIME_ATAKER_LIVE_NAVIGATION_COLLECTION_AUDIT_2026-09-09.md`.
 
 ## Required Preflight Before Any New Work
 1. Check this state.
@@ -80,6 +83,8 @@ Never blindly overwrite:
 2. Keep buyer / editorial / backlink outreach PAUSED until mailbox verification.
 3. Keep Meta Publisher PAUSED until a separate explicit safe test is approved.
 4. Resolve Search Console issues by verified delta: affected Soft 404/indexing URLs first, then merchant structured-data improvements where source facts are complete.
-5. Keep the verified redirect table stable; do not make destructive legacy-product changes without first-party affected-URL evidence.
-6. Obtain/confirm missing return/legal details before editing live policies.
-7. Continue SEO Delta + Search/Index monitoring + Daily Blog health checks.
+5. Treat `/collections/frontpage` as a verified thin published candidate, not a confirmed Soft 404, until first-party GSC affected-URL evidence is available.
+6. Repair the live mega-menu legacy `/collections/bra` image-link configuration only through a safe staging/unpublished-theme workflow or explicit theme-editor change; do not blind-write MAIN theme files.
+7. Keep the verified redirect table stable; do not make destructive legacy-product/menu changes without first-party affected-URL or business-reference evidence.
+8. Obtain/confirm missing return/legal details before editing live policies.
+9. Continue SEO Delta + Search/Index monitoring + Daily Blog health checks.
