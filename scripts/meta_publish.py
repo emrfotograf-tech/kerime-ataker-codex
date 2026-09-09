@@ -32,6 +32,8 @@ def call(method, url, *, params=None, data=None, headers=None, timeout=120):
 
 
 def raw_url(path):
+    if path.startswith(("http://", "https://")):
+        return path
     path = path.lstrip("/")
     return f"https://raw.githubusercontent.com/{REPO}/{quote(REF)}/{quote(path, safe='/')}"
 
@@ -236,9 +238,11 @@ def main():
                     "failed_at": datetime.now(TZ).isoformat(),
                     "error": str(exc),
                 }
+                print(f"{path}: {platform} publish failed: {exc}")
         item["status"] = "published" if all(results.get(p, {}).get("status") == "published" for p in item.get("platforms", ["instagram"])) else "partial_failed"
         item["updated_at"] = datetime.now(TZ).isoformat()
         path.write_text(json.dumps(item, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(f"{path}: {item['status']}")
     return 0
 
 
