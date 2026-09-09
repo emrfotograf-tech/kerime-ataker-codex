@@ -39,13 +39,17 @@ DONE work must not be rebuilt unless live evidence shows a verified regression o
 18. Meta Publisher GitHub workflow — PAUSED; runtime state architecture repaired on 2026-09-09, but live publisher must not be reactivated without an explicit safe test
 19. Meta runtime state branch `meta-publish-state` — DONE / ACTIVE; mutable queue status belongs here, not protected main
 20. Legacy Meta test queue item — CANCELLED in state branch
-21. Main-branch ruleset — ACTIVE; ChatGPT Codex Connector bypass is still present and should be removed after GitHub maintenance is finished
-22. Kerime Ataker brand mailbox `info@kerimeataker.com` integration — REQUIRES USER CONFIGURATION / not verified in connected Gmail
+21. Main-branch ruleset — DONE / ACTIVE; ChatGPT Codex Connector bypass removed and verified (`bypass_actors: []`)
+22. Kerime Ataker brand mailbox `info@kerimeataker.com` integration — PAUSED by user; complete later
 23. U.S. buyer / wholesale outreach — PAUSED until brand mailbox is verified
 24. Editorial / PR outreach — PAUSED until brand mailbox is verified
 25. Organic backlink / link-earning outreach — PAUSED until brand mailbox is verified; spam/bulk backlink acquisition prohibited
-26. Old blog gray-background image cleanup — PARTIAL / requires visual final QA if any legacy page still shows gray media
-27. Search Console baseline known issues — ACTIVE: Soft 404 plus previously failed Page Indexing / Video Indexing fix validations; report only changes, not the same baseline repeatedly
+26. Old blog gray-background image technical source audit — DONE; current published article featured images resolve through Shopify CDN and carry ALT text. Visual pixel/background QA remains only if a legacy page still visibly shows gray media.
+27. Search Console baseline known issues — ACTIVE: Soft 404, failed Page Indexing validation, failed Video Indexing validation. Some other Page Indexing fixes have succeeded. Report only status changes, not the same baseline repeatedly.
+28. Merchant Listings structured data — PARTIAL / DIAGNOSED: Google reports missing `shippingDetails`, `validFrom`, and `hasMerchantReturnPolicy` inside offers; currently non-critical recommendations.
+29. Product Snippets structured data — DIAGNOSED / NO FABRICATION: Google reports missing `aggregateRating` and `review`; do not create these unless verified real review/rating data exists.
+30. Shopify legal/policy data quality — PARTIAL: Refund Policy contains `[INSERT RETURN ADDRESS]`; Terms of Service contains unresolved template placeholders. Missing legal/return values must be confirmed before edits.
+31. Canonical SEO remediation state — ACTIVE in `docs/KERIME_ATAKER_SEO_REMEDIATION_STATE.md`.
 
 ## Required Preflight Before Any New Work
 1. Check this state.
@@ -66,10 +70,13 @@ Never blindly overwrite:
 - canonical/index directives
 - Meta publishing state
 - outreach history / sent-domain dedupe state
+- legal/policy placeholders with guessed values
+- structured review/rating data without real reviews
 
 ## Current Priority Queue
-1. Finish GitHub maintenance, then remove unnecessary Codex ruleset bypass.
-2. Verify / configure `info@kerimeataker.com` so brand mail can send and replies can be read safely.
-3. Reactivate buyer / editorial / backlink outreach only after mailbox verification.
-4. Keep Meta Publisher paused until a separate explicit safe test is approved.
-5. Continue SEO Delta + Search/Index monitoring + Daily Blog health checks.
+1. Keep `info@kerimeataker.com` mailbox setup PAUSED until the user resumes it.
+2. Keep buyer / editorial / backlink outreach PAUSED until mailbox verification.
+3. Keep Meta Publisher PAUSED until a separate explicit safe test is approved.
+4. Resolve Search Console issues by verified delta: affected Soft 404/indexing URLs first, then merchant structured-data improvements where source facts are complete.
+5. Obtain/confirm missing return/legal details before editing live policies.
+6. Continue SEO Delta + Search/Index monitoring + Daily Blog health checks.
