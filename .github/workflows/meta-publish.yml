@@ -30,8 +30,8 @@ jobs:
           META_SYSTEM_USER_TOKEN: ${{ secrets.META_SYSTEM_USER_TOKEN }}
           FB_PAGE_ID: '883182878201071'
           IG_USER_ID: '17841476687386286'
-          META_GRAPH_VERSION: 'v23.0'
-        run: python scripts/meta_publish.py
+          META_GRAPH_VERSION: 'v26.0'
+        run: python scripts/meta_publish_entry.py
 
       - name: Save publish results
         run: |
