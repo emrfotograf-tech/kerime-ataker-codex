@@ -31,7 +31,7 @@ jobs:
           FB_PAGE_ID: '883182878201071'
           IG_USER_ID: '17841476687386286'
           META_GRAPH_VERSION: 'v26.0'
-        run: python scripts/meta_publish_entry.py
+        run: python scripts/meta_publish.py
 
       - name: Save publish results
         run: |
