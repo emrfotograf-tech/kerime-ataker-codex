@@ -11,7 +11,9 @@
       "path": "https://cdn.shopify.com/s/files/1/0744/8228/6829/files/p1_4f42704a-4204-4b74-96a1-89b97821df87.jpg?v=1764356405"
     }
   ],
-  "status": "scheduled",
+  "status": "cancelled",
   "created_at": "2026-09-09T10:11:00+03:00",
-  "results": {}
+  "updated_at": "2026-09-09T18:05:00+03:00",
+  "results": {},
+  "note": "Cancelled during publisher hardening. Do not publish this legacy test item."
 }
