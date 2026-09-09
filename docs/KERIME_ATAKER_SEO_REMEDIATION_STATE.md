@@ -81,7 +81,7 @@ This section is a first-party Shopify inventory audit, NOT a claim that these UR
 4. Redirect hygiene — VERIFIED
    - Existing redirects cover renamed products, old collection handles, old page handles, and several old blog URLs.
    - `/products/elly-1` redirects to `/products/elly-leather-mini-dress`.
-   - `/products/nergis` currently redirects to `/products/elly-1`, creating a redirect chain. This is not proven as a Search Console Soft 404, but should be flattened to point directly to the final canonical product when safe.
+   - `/products/nergis` previously redirected to `/products/elly-1`, creating a two-hop chain. On 2026-09-09 this was safely flattened in live Shopify to `/products/nergis` → `/products/elly-leather-mini-dress`; the live redirect was re-read after the mutation and verified with no user errors.
    - Old `/pages/lookbook` and `/pages/gallery` redirect to `/collections/all`.
 
 ## Safe Remediation Rules
@@ -98,7 +98,7 @@ This section is a first-party Shopify inventory audit, NOT a claim that these UR
 
 1. Obtain affected URL list for Soft 404 / failed indexing validation — REQUIRES SEARCH CONSOLE DETAIL ACCESS.
 2. Cross-check the verified legacy candidate URLs above against first-party sitemap/Search Console examples before any destructive change.
-3. Flatten `/products/nergis` → `/products/elly-leather-mini-dress` after a final live redirect verification — SAFE DELTA CANDIDATE.
+3. Audit remaining redirect paths for chains/cycles and flatten only verified one-purpose chains — ACTIVE.
 4. Clean legal-policy placeholders after merchant confirms missing legal/return details — REQUIRES USER CONFIGURATION.
 5. Map verified shipping/return settings into Google Merchant structured data only after source values are complete — PARTIAL.
 6. Keep daily SEO Health monitoring active and notify only on status changes — ACTIVE.
