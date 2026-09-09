@@ -1,7 +1,7 @@
 # KERIME ATAKER — CURRENT OPERATING STATE
 
 Status: ACTIVE / CANONICAL
-Last updated: 2026-09-09
+Last updated: 2026-09-10
 
 Purpose: prevent repeated work, forgotten project state, and unsafe overwrites. Before any Kerime Ataker task, read this state first, then live systems, then act only on the delta.
 
@@ -36,11 +36,11 @@ DONE work must not be rebuilt unless live evidence shows a verified regression o
 15. Fashion media intelligence historical dataset — ACTIVE BACKGROUND; refresh live for current claims
 16. Verified Product Index historical snapshot — ACTIVE FALLBACK; live Shopify ACTIVE catalog is source of truth
 17. Meta direct publishing API credentials / manual IG publish proof — DONE
-18. Meta Publisher GitHub workflow — PAUSED; runtime state architecture repaired on 2026-09-09, but live publisher must not be reactivated without an explicit safe test
+18. Meta Publisher GitHub workflow — PAUSED / MANUAL ONLY; scheduled cron was removed on 2026-09-10 through PR #26. Current workflow contains `workflow_dispatch` only. No live publisher test was triggered by this repair.
 19. Meta runtime state branch `meta-publish-state` — DONE / ACTIVE; mutable queue status belongs here, not protected main
-20. Legacy Meta test queue item — CANCELLED in state branch
+20. Legacy Meta test queue item — CANCELLED in state branch; verified status `cancelled`, results empty, note says do not publish
 21. Main-branch ruleset — DONE / ACTIVE; ChatGPT Codex Connector bypass removed and verified (`bypass_actors: []`)
-22. Kerime Ataker brand mailbox `info@kerimeataker.com` integration — PAUSED by user; complete later
+22. Kerime Ataker brand mailbox `info@kerimeataker.com` integration — PAUSED / NOT VERIFIED. Gmail contains test messages sent TO the address from `info@emrfotograf.com`, but no verified message FROM `info@kerimeataker.com`; do not treat sender identity/routing as complete.
 23. U.S. buyer / wholesale outreach — PAUSED until brand mailbox is verified
 24. Editorial / PR outreach — PAUSED until brand mailbox is verified
 25. Organic backlink / link-earning outreach — PAUSED until brand mailbox is verified; spam/bulk backlink acquisition prohibited
@@ -52,7 +52,7 @@ DONE work must not be rebuilt unless live evidence shows a verified regression o
 31. Canonical SEO remediation state — ACTIVE in `docs/KERIME_ATAKER_SEO_REMEDIATION_STATE.md`.
 32. Shopify redirect-chain cleanup — DONE: `/products/nergis` now points directly to `/products/elly-leather-mini-dress`; live Shopify was re-read after update and the chain is removed.
 33. Shopify full redirect-chain/cycle audit — DONE: all current URL redirects were re-read after the Nergis repair; no remaining redirect target matches another redirect source path, so no additional multi-hop chain or cycle is present in the current redirect table.
-34. Active navigation audit — DONE: live MAIN theme header, mobile navigation, and Shop footer use `main-menu-2`; its current collection links point directly to live collection resources. Legacy `main-menu` / `accessory-menu` records are retained and not destructively edited.
+34. Navigation audit / legacy main-menu hygiene — DONE: active theme navigation remains on current collection resources. Legacy `main-menu` was safely re-read and its stale Lookbook item was updated from `/pages/gallery` to direct `/collections/all`; Home and Contact were preserved and the live result returned no user errors.
 35. Published collection thin-content audit — DONE: `/collections/frontpage` is a verified published 0-product / empty-description / no-SEO candidate requiring Search Console URL confirmation before any destructive action. `/collections/leather-dress` has one product and no collection description but valid SEO metadata; monitor only.
 36. MAIN-theme mega-menu link audit — DONE / ISSUE DIAGNOSED: current header-group configuration has promotional image URLs set to legacy `shopify://collections/bra`, which redirects to `/collections/lingerie`. This is an internal-link hygiene delta; no blind live MAIN-theme write was attempted. Detailed record: `docs/KERIME_ATAKER_LIVE_NAVIGATION_COLLECTION_AUDIT_2026-09-09.md`.
 
@@ -79,9 +79,9 @@ Never blindly overwrite:
 - structured review/rating data without real reviews
 
 ## Current Priority Queue
-1. Keep `info@kerimeataker.com` mailbox setup PAUSED until the user resumes it.
+1. Keep `info@kerimeataker.com` mailbox setup PAUSED until the user resumes it; sender identity/routing is not yet verified.
 2. Keep buyer / editorial / backlink outreach PAUSED until mailbox verification.
-3. Keep Meta Publisher PAUSED until a separate explicit safe test is approved.
+3. Keep Meta Publisher PAUSED; workflow is manual-only (`workflow_dispatch`) and must not be dispatched without explicit approval.
 4. Resolve Search Console issues by verified delta: affected Soft 404/indexing URLs first, then merchant structured-data improvements where source facts are complete.
 5. Treat `/collections/frontpage` as a verified thin published candidate, not a confirmed Soft 404, until first-party GSC affected-URL evidence is available.
 6. Repair the live mega-menu legacy `/collections/bra` image-link configuration only through a safe staging/unpublished-theme workflow or explicit theme-editor change; do not blind-write MAIN theme files.
