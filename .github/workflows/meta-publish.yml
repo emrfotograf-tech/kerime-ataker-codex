@@ -8,14 +8,36 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: kerime-ataker-meta-publisher
+  cancel-in-progress: false
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
           ref: main
+
+      - name: Checkout publish state
+        uses: actions/checkout@v4
+        with:
+          ref: meta-publish-state
+          path: .publish-state
+
+      - name: Sync new queue items
+        shell: bash
+        run: |
+          mkdir -p .publish-state/publish_queue
+          shopt -s nullglob
+          for file in publish_queue/*.json; do
+            target=".publish-state/$file"
+            if [ ! -f "$target" ]; then
+              cp "$file" "$target"
+            fi
+          done
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -31,15 +53,23 @@ jobs:
           FB_PAGE_ID: '883182878201071'
           IG_USER_ID: '17841476687386286'
           META_GRAPH_VERSION: 'v26.0'
+          META_PUBLISH_QUEUE_DIR: .publish-state/publish_queue
         run: python scripts/meta_publish.py
 
       - name: Save publish results
+        if: always()
+        working-directory: .publish-state
+        shell: bash
         run: |
-          if git diff --quiet -- publish_queue; then
+          if git diff --quiet -- publish_queue && [ -z "$(git ls-files --others --exclude-standard publish_queue)" ]; then
             exit 0
           fi
-          git config user.name "kerime-ataker-publisher"
-          git config user.email "actions@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add publish_queue
           git commit -m "Update Meta publish queue status"
-          git push
+          for attempt in 1 2 3; do
+            git push origin HEAD:meta-publish-state && exit 0
+            sleep 3
+          done
+          exit 1
