@@ -17,7 +17,7 @@ IG_USER_ID = os.getenv("IG_USER_ID", "17841476687386286")
 REPO = os.getenv("GITHUB_REPOSITORY", "emrfotograf-tech/kerime-ataker-codex")
 REF = os.getenv("GITHUB_REF_NAME", "main")
 TZ = ZoneInfo("Europe/Istanbul")
-QUEUE_DIR = Path("publish_queue")
+QUEUE_DIR = Path(os.getenv("META_PUBLISH_QUEUE_DIR", "publish_queue"))
 
 
 def call(method, url, *, params=None, data=None, headers=None, timeout=120):
@@ -216,11 +216,15 @@ def due(item):
 def main():
     if not QUEUE_DIR.exists():
         return 0
+
     token = page_token()
+    had_failures = False
+
     for path in sorted(QUEUE_DIR.glob("*.json")):
         item = json.loads(path.read_text(encoding="utf-8"))
         if item.get("status") not in {"scheduled", "partial_failed"} or not due(item):
             continue
+
         results = item.setdefault("results", {})
         for platform in item.get("platforms", ["instagram"]):
             if results.get(platform, {}).get("status") == "published":
@@ -232,18 +236,23 @@ def main():
                     "published_at": datetime.now(TZ).isoformat(),
                     "response": response,
                 }
+                print(f"{path}: {platform} published")
             except Exception as exc:
+                had_failures = True
                 results[platform] = {
                     "status": "failed",
                     "failed_at": datetime.now(TZ).isoformat(),
                     "error": str(exc),
                 }
                 print(f"{path}: {platform} publish failed: {exc}")
-        item["status"] = "published" if all(results.get(p, {}).get("status") == "published" for p in item.get("platforms", ["instagram"])) else "partial_failed"
+
+        platforms = item.get("platforms", ["instagram"])
+        item["status"] = "published" if all(results.get(p, {}).get("status") == "published" for p in platforms) else "partial_failed"
         item["updated_at"] = datetime.now(TZ).isoformat()
         path.write_text(json.dumps(item, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"{path}: {item['status']}")
-    return 0
+
+    return 1 if had_failures else 0
 
 
 if __name__ == "__main__":
