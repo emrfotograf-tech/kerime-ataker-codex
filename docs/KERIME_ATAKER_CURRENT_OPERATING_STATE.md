@@ -51,6 +51,7 @@ DONE work must not be rebuilt unless live evidence shows a verified regression o
 30. Shopify legal/policy data quality — PARTIAL: Refund Policy contains `[INSERT RETURN ADDRESS]`; Terms of Service contains unresolved template placeholders. Missing legal/return values must be confirmed before edits.
 31. Canonical SEO remediation state — ACTIVE in `docs/KERIME_ATAKER_SEO_REMEDIATION_STATE.md`.
 32. Shopify redirect-chain cleanup — DONE: `/products/nergis` now points directly to `/products/elly-leather-mini-dress`; live Shopify was re-read after update and the chain is removed.
+33. Shopify full redirect-chain/cycle audit — DONE: all current URL redirects were re-read after the Nergis repair; no remaining redirect target matches another redirect source path, so no additional multi-hop chain or cycle is present in the current redirect table.
 
 ## Required Preflight Before Any New Work
 1. Check this state.
@@ -79,6 +80,6 @@ Never blindly overwrite:
 2. Keep buyer / editorial / backlink outreach PAUSED until mailbox verification.
 3. Keep Meta Publisher PAUSED until a separate explicit safe test is approved.
 4. Resolve Search Console issues by verified delta: affected Soft 404/indexing URLs first, then merchant structured-data improvements where source facts are complete.
-5. Audit remaining Shopify redirects for verified chains/cycles; do not make destructive legacy-product changes without first-party affected-URL evidence.
+5. Keep the verified redirect table stable; do not make destructive legacy-product changes without first-party affected-URL evidence.
 6. Obtain/confirm missing return/legal details before editing live policies.
 7. Continue SEO Delta + Search/Index monitoring + Daily Blog health checks.
